@@ -6,7 +6,7 @@
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:05:35 by jsanford          #+#    #+#             */
-/*   Updated: 2018/12/10 13:06:51 by jsanford         ###   ########.fr       */
+/*   Updated: 2019/01/08 18:14:47 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,18 @@ int	main(int c, char **v)
 {
 	int fd;
 
+	fd = 0;
 	if (c == 2)
-		printf("file: %s (%d)", v[1], \
-		fd = open (v[1], O_WRONLY | O_CREAT| O_APPEND, S_IRUSR | S_IWUSR));
+	{
+		fd = open (v[1], O_WRONLY | O_CREAT| O_APPEND, S_IRUSR | S_IWUSR);
+		printf("file: %s (%d)", v[1], fd);
+		putstr_fd(fd, "?&&&\n");
+		printf ("\n\n close (fd) :  %d", close(fd));
+	}
 	else if (c == 1)
 		printf ("File name missing");
 	else
-	{
 		printf("Too many arguments");
-	}
-	putstr_fd(fd, "?&&&\n");	
-	printf ("\n\n %d", close(fd));
 	return (0);
 }
 

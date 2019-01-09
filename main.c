@@ -6,38 +6,41 @@
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:05:35 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/08 18:14:47 by jsanford         ###   ########.fr       */
+/*   Updated: 2019/01/09 18:46:30 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-
-void	putstr_fd(int fd, const char *str)
-{
-	while (*str != '\0')
-		write(fd, str++, 1); 
-}
+#include "head.h"
 
 int	main(int c, char **v)
 {
-	int fd;
+	int		fd;
+	int		i;
+	char	**str;
 
+	str = NULL;
 	fd = 0;
+	i = 0;
 	if (c == 2)
 	{
-		fd = open (v[1], O_WRONLY | O_CREAT| O_APPEND, S_IRUSR | S_IWUSR);
-		printf("file: %s (%d)", v[1], fd);
-		putstr_fd(fd, "?&&&\n");
-		printf ("\n\n close (fd) :  %d", close(fd));
+		while (i < 20)
+		{
+			fd = open(v[1], O_RDONLY);
+			if (fd == -1)
+			{
+				ft_putstr_fd("\nopen() error", 2);
+				return (0);
+			}
+			if ((get_next_line(fd, str)) == -1)
+				ft_putstr("error");
+		//	ft_putstr(*str);
+			i++;
+		}
 	}
 	else if (c == 1)
-		printf ("File name missing");
+		ft_putstr("File name missing\n");
 	else
-		printf("Too many arguments");
+		ft_putstr("Too many arguments\n");
 	return (0);
 }
-

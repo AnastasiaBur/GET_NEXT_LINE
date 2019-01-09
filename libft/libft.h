@@ -6,7 +6,7 @@
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 14:39:27 by jsanford          #+#    #+#             */
-/*   Updated: 2018/12/02 16:06:15 by jsanford         ###   ########.fr       */
+/*   Updated: 2018/12/05 17:50:53 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 typedef struct		s_list
 {
@@ -33,11 +36,11 @@ int					ft_isdigit(int c);
 int					ft_isprint(int c);
 char				*ft_itoa(int n);
 void				*ft_memalloc(size_t size);
-void				*ft_memccpy(void *restrict s1, const void *restrict s2, \
+void				*ft_memccpy(void *s1, const void *s2, \
 					int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
-void				*ft_memcpy(void *restrict s1, const void *restrict s2, \
+void				*ft_memcpy(void *s1, const void *s2, \
 					size_t n);
 void				ft_memdel(void **ap);
 void				*ft_memmove(void *dst, const void *src, size_t len);
@@ -50,7 +53,7 @@ void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(char const *s);
 void				ft_putstr_fd(char const *s, int fd);
-char				*ft_strcat(char *restrict s1, const char *restrict s2);
+char				*ft_strcat(char *s1, const char *s2);
 char				*ft_strchr(const char *s, int c);
 void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
@@ -62,11 +65,11 @@ void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlen(const char *s);
-size_t				ft_strlcat(char *restrict dst, const char *restrict src, \
+size_t				ft_strlcat(char *dst, const char *src, \
 					size_t size);
 char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char				*ft_strncat(char *restrict s1, const char *restrict s2, \
+char				*ft_strncat(char *s1, const char *s2, \
 					size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
@@ -88,5 +91,8 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_isspace(int c);
-
+int					ft_isupper(int c);
+int					ft_islower(int c);
+void				ft_display_file(int fd);
+int					ft_sqrt(int n);
 #endif

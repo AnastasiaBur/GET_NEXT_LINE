@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 17:05:35 by jsanford          #+#    #+#             */
-/*   Updated: 2018/11/30 17:06:51 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:51 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:16:49 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int	ft_max(const char *str, long long res, int sign)
 	return (1);
 }
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	long long	res;
-	int		sign;
+	int			sign;
 
 	res = 0;
 	sign = 1;

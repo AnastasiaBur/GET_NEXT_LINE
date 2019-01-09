@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 17:05:33 by jsanford          #+#    #+#             */
-/*   Updated: 2018/11/30 17:09:27 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:17:13 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict s1, const void *restrict s2, size_t n)
+void	*ft_memcpy(void *s1, const void *s2, size_t n)
 {
 	unsigned char		*d;
 	const unsigned char	*s;

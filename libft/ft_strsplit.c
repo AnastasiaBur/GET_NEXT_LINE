@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 17:13:46 by jsanford          #+#    #+#             */
-/*   Updated: 2018/11/30 20:28:18 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:17:16 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,7 @@ char			**ft_strsplit(char const *s, char c)
 	{
 		k = 0;
 		if (!(new[i] = ft_strnew(getlen(&s[j], c) + 1)))
-		{
-			ft_strdel(new);
-			return (NULL);
-		}
+			new[i] = NULL;
 		while (s[j] == c)
 			j++;
 		while (s[j] != c && s[j])

@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 19:38:53 by jsanford          #+#    #+#             */
-/*   Updated: 2018/11/26 14:46:54 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:17:14 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *restrict s1, const char *restrict s2)
+char	*ft_strcat(char *s1, const char *s2)
 {
 	int	i;
 	int j;

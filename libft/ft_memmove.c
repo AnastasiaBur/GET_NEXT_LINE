@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 17:05:34 by jsanford          #+#    #+#             */
-/*   Updated: 2018/12/02 15:13:54 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:17:13 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*d;
 	unsigned int	i;
 
-	i = 0;
+	i = -1;
 	s = (unsigned char *)src;
 	d = (unsigned char *)dst;
 	if (len == 0)
@@ -35,10 +35,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		}
 	}
 	else
-		while (i < len)
-		{
+		while (++i < len)
 			d[i] = s[i];
-			i++;
-		}
 	return (dst);
 }

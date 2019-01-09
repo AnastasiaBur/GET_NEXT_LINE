@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 18:28:11 by jsanford          #+#    #+#             */
-/*   Updated: 2018/11/26 14:55:59 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:23:35 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int		ft_isalpha(int c)
 {
-	if ((c <= 'Z' && c >= 'A') || (c <= 'z' && c >= 'a'))
+	if (ft_islower(c) || ft_isupper(c))
 		return (1);
-	else
-		return (0);
+	return (0);
 }

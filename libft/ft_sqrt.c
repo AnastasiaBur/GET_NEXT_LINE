@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
-/*   Updated: 2018/12/05 17:17:14 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:28:13 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:44:53 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		ft_sqrt(int nb)
 {
-	write(fd, &c, 1);
+	int s;
+
+	s = 1;
+	if (nb <= 0)
+		return (0);
+	while (s < 46341)
+	{
+		if (s * s == nb)
+			return (s);
+		s++;
+	}
+	return (0);
 }

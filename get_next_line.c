@@ -6,11 +6,9 @@
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/27 15:54:14 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/09 18:46:05 by jsanford         ###   ########.fr       */
+/*   Updated: 2019/01/09 19:06:29 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* read malloc free */
 
 #include "head.h"
 
@@ -18,7 +16,7 @@ int		get_next_line(const int fd, char **str)
 {
 	int			ret;
 	char		buf[BUFF_SIZE + 1];
-	int			i;	
+	int			i;
 	static int	offset = 0;
 
 	i = 0;
@@ -33,9 +31,8 @@ int		get_next_line(const int fd, char **str)
 		while (buf[i] != '\n' && buf[i] != '\0' && i < BUFF_SIZE)
 		{
 			if (str)
-			{}
-		//	str = (char **)malloc(sizeof(str) * ret);
-		//	ft_strcpy(*str, "Hey");
+			{
+			}
 			ft_putchar(buf[i]);
 			i++;
 			offset++;

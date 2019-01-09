@@ -6,7 +6,7 @@
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 13:05:35 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/09 18:46:30 by jsanford         ###   ########.fr       */
+/*   Updated: 2019/01/09 19:06:18 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ int	main(int c, char **v)
 	str = NULL;
 	fd = 0;
 	i = 0;
+	if (str)
+	{
+	}
 	if (c == 2)
 	{
 		while (i < 20)
@@ -34,7 +37,6 @@ int	main(int c, char **v)
 			}
 			if ((get_next_line(fd, str)) == -1)
 				ft_putstr("error");
-		//	ft_putstr(*str);
 			i++;
 		}
 	}

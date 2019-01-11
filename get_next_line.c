@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/27 15:54:14 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/09 19:06:29 by jsanford         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "head.h"
 
 int		get_next_line(const int fd, char **str)
@@ -18,30 +6,33 @@ int		get_next_line(const int fd, char **str)
 	char		buf[BUFF_SIZE + 1];
 	int			i;
 	static int	offset = 0;
+	int			len;
+	char		*adr;
 
 	i = 0;
+	len = 0;
 	if ((lseek(fd, offset, SEEK_SET)) == -1)
 	{
-		ft_putstr("lseek() error");
-		return (close(fd));
+		close(fd)
+		return (-1);
 	}
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
+		len += ret;
+		*str = (char *)malloc(sizeof(char) * (len + 1));
+		adr = *str;
 		i = 0;
 		while (buf[i] != '\n' && buf[i] != '\0' && i < BUFF_SIZE)
 		{
-			if (str)
-			{
-			}
-			ft_putchar(buf[i]);
+			*adr = buf[i];
 			i++;
 			offset++;
+			adr++;
 		}
 		if (buf[i] == '\n' || buf[i] == '\0')
 		{
 			if (buf[i] == '\n')
 				offset++;
-			ft_putchar('\n');
 			return (close(fd));
 		}
 	}

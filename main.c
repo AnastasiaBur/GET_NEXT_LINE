@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/10 13:05:35 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/09 19:06:18 by jsanford         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 #include "head.h"
 
@@ -18,26 +6,23 @@ int	main(int c, char **v)
 	int		fd;
 	int		i;
 	char	**str;
+	char	*smth;
 
-	str = NULL;
+	str = &smth;
 	fd = 0;
 	i = 0;
-	if (str)
-	{
-	}
 	if (c == 2)
 	{
-		while (i < 20)
+		while (i < 6)
 		{
 			fd = open(v[1], O_RDONLY);
 			if (fd == -1)
-			{
-				ft_putstr_fd("\nopen() error", 2);
 				return (0);
-			}
 			if ((get_next_line(fd, str)) == -1)
 				ft_putstr("error");
+			ft_putstr(*str);
 			i++;
+			ft_putchar('\n');
 		}
 	}
 	else if (c == 1)

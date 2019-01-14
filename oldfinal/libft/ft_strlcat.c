@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/27 15:51:52 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/14 19:41:40 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:17:14 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "libft.h"
-# include <stdio.h>
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
+{
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	n;
 
-# define BUFF_SIZE 99999
-
-int		get_next_line(const int fd, char **line);
-
-void	skip(int *i, char ***str, char *buf, int *offset);
-//void	*reallocation(char **str, int len, int ret);
-#endif
+	j = 0;
+	i = ft_strlen(dst);
+	n = ft_strlen(src);
+	if (size < i + 1)
+		return (size + n);
+	while (src[j] != '\0' && i < size - 1 && size > 1)
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+		n--;
+	}
+	dst[i] = '\0';
+	return (i + n);
+}

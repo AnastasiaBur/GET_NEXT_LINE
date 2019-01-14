@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/27 15:51:52 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/14 19:41:40 by jsanford         ###   ########.fr       */
+/*   Created: 2019/01/14 16:06:13 by jsanford          #+#    #+#             */
+/*   Updated: 2019/01/14 16:16:45 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
+#include "get_next_line.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "libft.h"
-# include <stdio.h>
+int	main(int c, char **v)
+{
+	int		fd;
+	char	**str;
+	char	*smth;
 
-# define BUFF_SIZE 99999
-
-int		get_next_line(const int fd, char **line);
-
-void	skip(int *i, char ***str, char *buf, int *offset);
-//void	*reallocation(char **str, int len, int ret);
-#endif
+	str = &smth;
+	fd = 0;
+	if (c == 2)
+	{
+		fd = open(v[1], O_RDONLY);
+		if (fd == -1)
+			return (0);
+		ft_putstr(*str);
+		ft_putchar('\n');
+	}
+	else
+		ft_putstr("Enter a filename.\n");
+	return (0);
+}

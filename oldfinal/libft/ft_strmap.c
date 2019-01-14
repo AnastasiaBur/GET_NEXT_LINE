@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/27 15:51:52 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/14 19:41:40 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:17:14 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include "libft.h"
-# include <stdio.h>
+char		*ft_strmap(char const *s, char (*f)(char))
+{
+	int		i;
+	char	*new;
 
-# define BUFF_SIZE 99999
-
-int		get_next_line(const int fd, char **line);
-
-void	skip(int *i, char ***str, char *buf, int *offset);
-//void	*reallocation(char **str, int len, int ret);
-#endif
+	i = 0;
+	if (!s || !f || !(new = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		new[i] = f(s[i]);
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
+}

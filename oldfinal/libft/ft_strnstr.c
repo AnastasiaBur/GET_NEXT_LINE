@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_display_file.c                                  :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 17:36:30 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/14 15:25:53 by jsanford         ###   ########.fr       */
+/*   Created: 2018/12/05 17:07:54 by jsanford          #+#    #+#             */
+/*   Updated: 2018/12/05 17:17:14 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_display_file(int fd)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int		ret;
-	char	buf[2];
+	unsigned int i;
+	unsigned int j;
 
-	while ((ret = read(fd, buf, 1)) != 0)
+	i = 0;
+	j = 0;
+	if (ft_strlen(needle) == 0)
+		return ((char *)haystack);
+	while (haystack[i] != '\0' && i < len)
 	{
-		buf[ret] = '\0';
-		ft_putstr(buf);
+		j = 0;
+		while (haystack[i + j] == needle[j] && i + j < len)
+		{
+			if (j + 1 == ft_strlen(needle))
+				return ((char *)(haystack + i));
+			j++;
+		}
+		i++;
 	}
+	return (NULL);
 }

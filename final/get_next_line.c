@@ -6,75 +6,55 @@
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 20:04:18 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/16 19:39:00 by jsanford         ###   ########.fr       */
+/*   Updated: 2019/01/17 19:20:42 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		get_next_line(const int fd, char **str)
+int		ft_reading(int const fd, char **crnt)
 {
-	char		buf[BUFF_SIZE];
-	int			i;
-	static int	offset = 0;
-	int			len;
+	char	buf[BUFF_SIZE + 1];
+	int		bytes;
+	char	*join;
+
+	bytes = read(fd, buf, BUFF_SIZE);
+	if (bytes > 0)
+	{
+		buf[bytes] = '\0';
+		if (!(join = ft_strjoin(*crnt, buf)))
+			return (-1);
+		free(*crnt);
+		*crnt = join;
+	}
+	return (bytes);
+}
+
+int		get_next_line(int const fd, char **str)
+{
 	int			ret;
+	static char	**crnt = NULL;
+	char		*end_symbol;
 
-	i = 0;
-	len = 0;
-	if (fd < 0)
+	if ((crnt == NULL) && ((crnt = (char*)ft_memalloc(sizeof(char))) == NULL))
 		return (-1);
-	i = lseek(fd, offset, SEEK_SET);
-	while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+	end_symbol = ft_strchr(crnt, '\n');
+	while (end_symbol == NULL)
 	{
-		i = len;
-		if (len < 1)
-			*str = (char*)ft_memalloc(len + ret);
-		else
-			str = ft_realloc(str, len, ret);
-		len += ret;
-		skip(&i, &str, buf, &offset);
-		if (buf[i] == '\n')
+		if ((ret = ft_reading(fd, &crnt)) == 0)
 		{
-			offset++;
-			return (1);
+			if ((end_symbol = ft_strchr(crnt, '\0')) == crnt)
+				return (0);
 		}
+		else if (ret < 0)
+			return (-1);
+		else
+			end_symbol = ft_strchr(crnt, '\n');
 	}
-	if (ret == 0 || buf[i] == EOF)
-	{
-		offset = 0;
-		return (0);
-	}
-	if (ret < 0)
+	if (!(*str = ft_strsub(crnt, 0, end_symbol - crnt)))
 		return (-1);
+	end_symbol = ft_strdup(end_symbol + 1);
+	free(crnt);
+	crnt = end_symbol;
 	return (1);
-}
-
-void	skip(int *i, char ***str, const char *buf, int *offset)
-{
-	char	*adr;
-
-	adr = **str;
-	while (buf[*i] != '\n' && buf[*i] != EOF && *i < BUFF_SIZE)
-	{
-		*adr = buf[*i];
-		*i += 1;
-		adr++;
-		*offset += 1;
-	}
-}
-
-char	**ft_realloc(char **str, int len, int ret)
-{
-	char	**new;
-	char	*idk;
-
-	new = &idk;
-	*new = (char*)ft_memalloc(sizeof(char) * (len + ret));
-	if (len > 0)
-	{
-		*new = ft_memcpy(new, str, len);
-		//ft_memdel((void**)str);
-	}
-	return (new);
 }

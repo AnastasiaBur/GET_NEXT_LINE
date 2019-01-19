@@ -4,6 +4,7 @@ The aim of this project was to make a function that returns a line ending with a
 Calling the function in a loop will then allow you to read the text available on a file descriptor one line at a time
 until the end of the text, no matter the size of either the text or one of its lines.  
 The function behaves well when it reads from a file, from the standard output, from a redirection etc.  
+
 Function prototype:  
 `int		get_next_line(const int fd, char **line);`  
 The first parameter is the file descriptor of the file we're going to read from.  

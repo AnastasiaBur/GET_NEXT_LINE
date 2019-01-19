@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsanford <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/11 20:04:18 by jsanford          #+#    #+#             */
-/*   Updated: 2019/01/17 19:20:42 by jsanford         ###   ########.fr       */
+/*   Created: 2019/01/17 19:28:27 by jsanford          #+#    #+#             */
+/*   Updated: 2019/01/19 17:05:26 by jsanford         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_reading(int const fd, char **crnt)
 int		get_next_line(int const fd, char **str)
 {
 	int			ret;
-	static char	**crnt = NULL;
+	static char	*crnt = NULL;
 	char		*end_symbol;
 
 	if ((crnt == NULL) && ((crnt = (char*)ft_memalloc(sizeof(char))) == NULL))
